@@ -1,8 +1,13 @@
 import React from 'react';
 import * as Location from 'expo-location';
 
+interface locationProps {
+	latitude: number;
+	longitude: number;
+}
+
 const useLocation = () => {
-	const [location, setLocation] = React.useState();
+	const [location, setLocation] = React.useState<locationProps>();
 
 	const fetchLocation = async () => {
 		try {

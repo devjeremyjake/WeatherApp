@@ -1,17 +1,33 @@
 import React from 'react';
 import axios from 'axios';
-import useLocation from '../Hooks/useLocation';
+import useLocation from './useLocation';
+
+interface dataProps {
+	location: locationDataProps;
+	condition: conditionProps;
+	temp_c: string;
+}
+
+interface locationDataProps {
+	region: string;
+	name: string;
+}
+
+interface conditionProps {
+	icon: string;
+	text: string;
+}
 
 const useRequestApi = () => {
 	// current states
-	const [city, setCity] = React.useState('');
-	const [data, setData] = React.useState([]);
-	const [isLoading, setIsLoading] = React.useState(false);
-	const [error, setError] = React.useState(null);
+	const [city, setCity] = React.useState<string>('');
+	const [data, setData] = React.useState<dataProps>();
+	const [isLoading, setIsLoading] = React.useState<boolean>(false);
+	const [error, setError] = React.useState<string>(null);
 	// location hook
 	const { location } = useLocation();
 
-	const updateCityValue = (value) => {
+	const updateCityValue = (value: string) => {
 		setCity(value);
 	};
 

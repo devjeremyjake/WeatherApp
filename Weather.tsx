@@ -21,7 +21,7 @@ import { BASE_COLOR, COLOR_ONE, COLOR_WHITE, FONT_FAMILY } from './Constants';
 const Weather = () => {
 	const styles = useStyles();
 	const deviceSize = useDeviceSize();
-	const [inputField, setInputField] = React.useState('');
+	const [inputField, setInputField] = React.useState<string>('');
 	const { data, isLoading, error, updateCityValue } = useRequestApi();
 
 	// ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
