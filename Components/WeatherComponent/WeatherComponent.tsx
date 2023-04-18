@@ -1,5 +1,4 @@
 import { View, Text, Image, ScrollView } from 'react-native';
-import React from 'react';
 import { BASE_COLOR, DARK_COLOR_ONE } from '../../Constants';
 import {
 	CreateResponsiveStyle,
@@ -18,12 +17,15 @@ const WeatherComponent = ({ data }) => {
 					{data?.location?.name}, {data?.location?.region}
 				</Text>
 				{/* Image section */}
-				<Image
-					style={styles.imageStyle}
-					source={{
-						uri: `https:${data?.current?.condition?.icon}`,
-					}}
-				/>
+				<View>
+					<Image
+						source={{
+							uri: `https:${data?.current?.condition?.icon}`,
+						}}
+						style={styles.image}
+					/>
+				</View>
+
 				<View style={styles.conditionContainer}>
 					<Text style={styles.conditionText}>
 						{data?.current?.condition?.text}
@@ -54,7 +56,7 @@ const useStyles = CreateResponsiveStyle(
 			color: DARK_COLOR_ONE,
 			textAlign: 'center',
 		},
-		imageStyle: {
+		image: {
 			width: 150,
 			height: 150,
 		},
